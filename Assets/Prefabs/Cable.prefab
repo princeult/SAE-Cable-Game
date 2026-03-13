@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7012109699792765928}
   - component: {fileID: 4055699856983699863}
   - component: {fileID: 5334571613107607924}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 5470025777166471064}
   - component: {fileID: 8920331946251155591}
   - component: {fileID: 2759618011050179243}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 5175190319945238576}
   - component: {fileID: 909716610264957091}
   - component: {fileID: 2433383321944715517}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Connector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +331,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -361,7 +361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 657315690714246584}
   - component: {fileID: 5070044843996701409}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cable
   m_TagString: Untagged
   m_Icon: {fileID: 0}

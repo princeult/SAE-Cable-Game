@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8788577021872891420}
   - component: {fileID: 6509534978093528165}
   - component: {fileID: 1579519038937453717}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 163397429811095874}
   - component: {fileID: 344878054235090190}
   - component: {fileID: 9216805098157034977}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 3969723063441511317}
   - component: {fileID: 7206942036138550964}
   - component: {fileID: 113947656257318550}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 1519670776413615858}
   - component: {fileID: 7387609909759408827}
   - component: {fileID: 8668619671088561460}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 4243935244981949916}
   - component: {fileID: 5973888810720667751}
   - component: {fileID: 6155182021807460489}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -580,7 +580,7 @@ GameObject:
   - component: {fileID: 4316946284917809467}
   - component: {fileID: 8898179539429667103}
   - component: {fileID: 9093146280759296153}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -694,7 +694,7 @@ GameObject:
   - component: {fileID: 4130362964768459543}
   - component: {fileID: 3360476189575818976}
   - component: {fileID: 418174537501059227}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -810,7 +810,7 @@ GameObject:
   - component: {fileID: 2119904930829483239}
   - component: {fileID: 2276819046432174721}
   - component: {fileID: 905949427910284765}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1050,7 +1050,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5704453515420692354}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CableSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1084,7 +1084,7 @@ GameObject:
   - component: {fileID: 2154235512057659440}
   - component: {fileID: 5987602023804919017}
   - component: {fileID: 1373759143539981307}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -26,9 +26,7 @@ public class ControlCar : ICableInteract
                 else
                 {
                     GameManager.Instance.Cable._startPoint.transform.position = GameManager.Instance.Car.CableSpawnPoint.transform.position;
-                    GameManager.Instance.Cable.gameObject.SetActive(true);
-                    GameManager.Instance.Cable.connecterCollider.enabled = false;                 
-
+                    GameManager.Instance.Cable.gameObject.SetActive(true);             
                 }
 
                     GameManager.Instance.Cable._followPoint = GameManager.Instance.Cable._endPoint;
@@ -38,7 +36,6 @@ public class ControlCar : ICableInteract
             case ICableInteract.CurrentCablePoint.start:
 
             GameManager.Instance.Cable._followPoint = null;
-            GameManager.Instance.Cable.connecterCollider.enabled = true;
 
                 return ICableInteract.CurrentCablePoint.end;
 
