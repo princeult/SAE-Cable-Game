@@ -8,8 +8,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [DoNotSerialize] public static GameManager Instance;
-    public enum CarSpawnType {none, levelStart, atPlayerLocation}
-    public Dictionary<Quests, UnityEvent> QuestsToComplete;
+    [DoNotSerialize] public Dictionary<Cable.CableState, Color32> ParticleSystemColour = new()
+    {
+        {Cable.CableState.none, new Color32(0, 0, 0, 0)},
+        {Cable.CableState.electrified, new Color32(8, 191, 255, 255)}
+    };
+    public enum CarSpawnType {none, levelStart, atPlayerLocation};
+    public Dictionary<Quests, UnityEvent> QuestsToComplete = new();
     public Car Car;
     public Cable Cable;
     [SerializeField] private string _startSceneName;
@@ -44,24 +49,27 @@ public class GameManager : MonoBehaviour
     {
         if(_scene != "GlobalScene")
         {
+            GameObject[] _quests = GameObject.FindGameObjectsWithTag("Quest");
             if(QuestsToComplete != null)
             {
                 QuestsToComplete.Clear();
-                GameObject[] _quests = GameObject.FindGameObjectsWithTag("Quest");
                 
-                if(_quests != null)
+            }
+            if(_quests != null)
+            {
+                foreach(GameObject item in _quests)
                 {
-                    foreach(GameObject item in _quests)
-                    {
-                        Quests _quest = item.GetComponent<Quests>();
-                        QuestsToComplete.Add(_quest, _quest.CompletionEvent);
-                    }
+                    Quests _quest = item.GetComponent<Quests>();
+                    QuestsToComplete.Add(_quest, _quest.CompletionEvent);
                 }
             }
+
         }
     }
-    IEnumerator LoadScene(string _scene)
+    public IEnumerator LoadScene(string _scene, float _delay)
     {
+        yield return new WaitForSeconds(_delay);
+
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_scene);
 
         while (!asyncLoad.isDone)
@@ -72,7 +80,6 @@ public class GameManager : MonoBehaviour
 
     public void InitScene(Car _car, string _scene, Vector3 _carSpawnPos, Quaternion _carSpawnRot)
     {
-        GetAllQuests(_scene);
         SpawnCar(_car, CarSpawnType.levelStart, _carSpawnPos, _carSpawnRot);
         GetAllQuests(_scene);
         Debug.Log("New Scene " + _scene + " Loaded");
@@ -94,7 +101,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        StartCoroutine(LoadScene(_startSceneName));
+        StartCoroutine(LoadScene(_startSceneName, 0));
     }
 }
 

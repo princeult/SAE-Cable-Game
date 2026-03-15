@@ -3,7 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class Controls : MonoBehaviour
 {
-    private ICableInteract _carControl = new ControlCar();
+    private readonly ICableInteract _carControl = new ControlCar();
+    private readonly ICableInteract _cableControl = new ControlCable();
     ICableInteract.CurrentCablePoint currentCablePoint;
     private bool _interactOnce = true; //For only interacting once per button press
     private float _horizontalInput;
@@ -33,7 +34,7 @@ public class Controls : MonoBehaviour
 
         if(Input.GetKeyDown("f") && _interactOnce)
         {
-            currentCablePoint = _carControl.PlaceCable(currentCablePoint);
+            currentCablePoint = _cableControl.PlaceCable(currentCablePoint);
             _interactOnce = false;
         }
         else if(!_interactOnce)

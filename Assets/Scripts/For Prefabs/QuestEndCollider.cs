@@ -1,0 +1,35 @@
+
+using UnityEngine;
+
+public class QuestEndCollider : MonoBehaviour
+{
+    [SerializeField] private Quests _questParent;
+    [SerializeField] private ParticleSystem _particleSystem;
+
+
+    private void OnTriggerEnter(Collider _collision)
+    {
+        if (_collision.gameObject.CompareTag("Cable"))
+        {
+            if(GameManager.Instance.Cable.CurrentCurrentState == _questParent.CurrentCableState)
+            {
+                var _psEmission = _particleSystem.emission;
+                _psEmission.rateOverTime = GameManager.Instance.Cable.ParticleAmount;
+                _questParent.CompleteQuest();
+            }
+            
+        }
+    }
+    private void OnTriggerExit(Collider _collision)
+    {
+        if (_collision.gameObject.CompareTag("Cable"))
+        {
+            if(GameManager.Instance.Cable.CurrentCurrentState == _questParent.CurrentCableState)
+            {
+                var _psEmission = _particleSystem.emission;
+                _psEmission.rateOverTime = 0;
+            }
+            
+        }
+    }
+}

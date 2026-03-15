@@ -1039,7 +1039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7178825587090601881, guid: facf236443b526544a67c5ac9e5c1553, type: 3}
       propertyPath: CompletionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7178825587090601881, guid: facf236443b526544a67c5ac9e5c1553, type: 3}
       propertyPath: CompletionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1055,19 +1055,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7178825587090601881, guid: facf236443b526544a67c5ac9e5c1553, type: 3}
       propertyPath: CompletionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadNewScene
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7178825587090601881, guid: facf236443b526544a67c5ac9e5c1553, type: 3}
       propertyPath: CompletionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Quests, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7178825587090601881, guid: facf236443b526544a67c5ac9e5c1553, type: 3}
-      propertyPath: CompletionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level_1
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7178825587090601881, guid: facf236443b526544a67c5ac9e5c1553, type: 3}
       propertyPath: CompletionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8590866530692074839, guid: facf236443b526544a67c5ac9e5c1553, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1082,17 +1078,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: facf236443b526544a67c5ac9e5c1553, type: 3}
---- !u!114 &1801434666 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7178825587090601881, guid: facf236443b526544a67c5ac9e5c1553, type: 3}
+--- !u!1 &1801434666 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4212487738134433030, guid: facf236443b526544a67c5ac9e5c1553, type: 3}
   m_PrefabInstance: {fileID: 1801434665}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60d7d4c6f191cb444beeaaf3d245be84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Quests
 --- !u!198 &1982094382 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 2182249957148880453, guid: facf236443b526544a67c5ac9e5c1553, type: 3}
