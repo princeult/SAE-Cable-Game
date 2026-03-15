@@ -35,7 +35,7 @@ public class Quests : MonoBehaviour
         {
             foreach(GameObject _point in _points)
             {
-                _point.GetComponent<MeshRenderer>().material = GameManager.Instance.Cable.ConnectorStateMaterial[CurrentCableState];
+                _point.GetComponent<MeshRenderer>().material = GameManager.Instance.CableInstance.ConnectorStateMaterial[CurrentCableState];
                 _point.GetComponentInChildren<ParticleSystem>(true).gameObject.SetActive(true);
             }
 

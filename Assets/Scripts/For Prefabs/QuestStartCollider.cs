@@ -9,7 +9,7 @@ public class QuestStartCollider : MonoBehaviour
     {
         if (_collision.gameObject.CompareTag("Cable"))
         {
-            if(GameManager.Instance.Cable.CurrentCurrentState != _questParent.CurrentCableState)
+            if(GameManager.Instance.CableInstance.CurrentCurrentState != _questParent.CurrentCableState)
             {
                 _questParent.CableControl.SetCableState(_questParent.CurrentCableState);
             }
@@ -21,7 +21,7 @@ public class QuestStartCollider : MonoBehaviour
     {
         if (_collision.gameObject.CompareTag("Cable"))
         {
-            if(GameManager.Instance.Cable.CurrentCurrentState != Cable.CableState.none)
+            if(GameManager.Instance.CableInstance.CurrentCurrentState != Cable.CableState.none)
             {
                 _questParent.CableControl.SetCableState(Cable.CableState.none);
             }

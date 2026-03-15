@@ -1,11 +1,15 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Controls : MonoBehaviour
 {
+    [DoNotSerialize] public static Controls Instance;
+
+    public ICableInteract.CurrentCablePoint currentCablePoint;
+
     private readonly ICableInteract _carControl = new ControlCar();
     private readonly ICableInteract _cableControl = new ControlCable();
-    ICableInteract.CurrentCablePoint currentCablePoint;
     private bool _interactOnce = true; //For only interacting once per button press
     private float _horizontalInput;
     private float _verticalInput;
@@ -16,8 +20,14 @@ public class Controls : MonoBehaviour
         Inputs();
     }
 
-    private void Awake()
-    {
+private void Awake()
+    {//Create singleton for gamemanager
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
         DontDestroyOnLoad(this);
     }
 

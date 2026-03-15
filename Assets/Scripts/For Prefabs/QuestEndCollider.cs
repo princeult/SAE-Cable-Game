@@ -11,10 +11,10 @@ public class QuestEndCollider : MonoBehaviour
     {
         if (_collision.gameObject.CompareTag("Cable"))
         {
-            if(GameManager.Instance.Cable.CurrentCurrentState == _questParent.CurrentCableState)
+            if(GameManager.Instance.CableInstance.CurrentCurrentState == _questParent.CurrentCableState)
             {
                 var _psEmission = _particleSystem.emission;
-                _psEmission.rateOverTime = GameManager.Instance.Cable.ParticleAmount;
+                _psEmission.rateOverTime = GameManager.Instance.CableInstance.ParticleAmount;
                 _questParent.CompleteQuest();
             }
             
@@ -24,7 +24,7 @@ public class QuestEndCollider : MonoBehaviour
     {
         if (_collision.gameObject.CompareTag("Cable"))
         {
-            if(GameManager.Instance.Cable.CurrentCurrentState == _questParent.CurrentCableState)
+            if(GameManager.Instance.CableInstance.CurrentCurrentState == _questParent.CurrentCableState)
             {
                 var _psEmission = _particleSystem.emission;
                 _psEmission.rateOverTime = 0;

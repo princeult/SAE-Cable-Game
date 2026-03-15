@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6fdf072061f1540869cef8e3651d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Controls
+  currentCablePoint: 0
 --- !u!1 &1129097062
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,8 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95ff3fbae02761d409585e0116f9aad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  Car: {fileID: 6155182021807460489, guid: 4c3fa937beacedc489579a5b714e533b, type: 3}
-  Cable: {fileID: 5070044843996701409, guid: cbe54635db7dfe148aaa7116859dab53, type: 3}
+  CarRefrence: {fileID: 6155182021807460489, guid: 4c3fa937beacedc489579a5b714e533b, type: 3}
+  CableRefrence: {fileID: 5070044843996701409, guid: cbe54635db7dfe148aaa7116859dab53, type: 3}
   _startSceneName: StartScene
 --- !u!4 &1129097064
 Transform:

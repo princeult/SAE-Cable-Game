@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,15 +9,20 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [DoNotSerialize] public static GameManager Instance;
+    [NonSerialized] public Car CarInstance;
+    [NonSerialized] public Cable CableInstance;
     [DoNotSerialize] public Dictionary<Cable.CableState, Color32> ParticleSystemColour = new()
     {
         {Cable.CableState.none, new Color32(0, 0, 0, 0)},
         {Cable.CableState.electrified, new Color32(8, 191, 255, 255)}
     };
+    
     public enum CarSpawnType {none, levelStart, atPlayerLocation};
     public Dictionary<Quests, UnityEvent> QuestsToComplete = new();
-    public Car Car;
-    public Cable Cable;
+    public Car CarRefrence;
+    public Cable CableRefrence;
+    
+
     [SerializeField] private string _startSceneName;
     
 
@@ -27,12 +33,12 @@ public class GameManager : MonoBehaviour
         switch (carSpawnType)
         {
             case CarSpawnType.levelStart:
-                Car = Instantiate(_car, _spawnPos, _spawnRot);
+                CarInstance = Instantiate(_car, _spawnPos, _spawnRot);
             break;
             case CarSpawnType.atPlayerLocation:
-                _spawnPos = Car.transform.position + new Vector3(0f,0.25f, 0f);
-                _spawnRot = Car.transform.rotation;
-                Car = Instantiate(_car, _spawnPos, _spawnRot);
+                _spawnPos = CarInstance.transform.position + new Vector3(0f,0.25f, 0f);
+                _spawnRot = CarInstance.transform.rotation;
+                CarInstance = Instantiate(_car, _spawnPos, _spawnRot);
             break;
         }
 
@@ -40,10 +46,10 @@ public class GameManager : MonoBehaviour
     }
     public void SpawnCable(Cable cable)
     {
-        Vector3 _spawnPos = Car.CableSpawnPoint.position;
-        Quaternion _spawnRot = Car.CableSpawnPoint.rotation;
-        Cable = Instantiate(cable, _spawnPos, _spawnRot);
-        Cable._inLevel = true;
+        Vector3 _spawnPos = CarInstance.CableSpawnPoint.position;
+        Quaternion _spawnRot = CarInstance.CableSpawnPoint.rotation;
+        CableInstance = Instantiate(cable, _spawnPos, _spawnRot);
+        CableInstance._inLevel = true;
     }
     private void GetAllQuests(string _scene)
     {
@@ -69,7 +75,6 @@ public class GameManager : MonoBehaviour
     public IEnumerator LoadScene(string _scene, float _delay)
     {
         yield return new WaitForSeconds(_delay);
-
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_scene);
 
         while (!asyncLoad.isDone)
@@ -80,6 +85,7 @@ public class GameManager : MonoBehaviour
 
     public void InitScene(Car _car, string _scene, Vector3 _carSpawnPos, Quaternion _carSpawnRot)
     {
+        Controls.Instance.currentCablePoint = ICableInteract.CurrentCablePoint.none; 
         SpawnCar(_car, CarSpawnType.levelStart, _carSpawnPos, _carSpawnRot);
         GetAllQuests(_scene);
         Debug.Log("New Scene " + _scene + " Loaded");

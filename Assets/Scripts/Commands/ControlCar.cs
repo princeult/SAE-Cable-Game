@@ -10,7 +10,7 @@ public class ControlCar : ICableInteract
 
     public void MoveControl(Vector2 _direction)
     {
-        GameManager.Instance.Car.moveDirection = _direction;
+        GameManager.Instance.CarInstance.moveDirection = _direction;
     }
 
     public ICableInteract.CurrentCablePoint PlaceCable(ICableInteract.CurrentCablePoint currentCablePoint)

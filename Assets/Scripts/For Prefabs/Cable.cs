@@ -27,7 +27,7 @@ public class Cable : MonoBehaviour
     {
         if(_followPoint != null)
         {
-            _followPoint.transform.position = GameManager.Instance.Car.CableSpawnPoint.transform.position;
+            _followPoint.transform.position = GameManager.Instance.CarInstance.CableSpawnPoint.transform.position;
         }
     }
 

@@ -19,31 +19,29 @@ public class ControlCable : ICableInteract
         {
             case ICableInteract.CurrentCablePoint.none:
 
-                GameManager.Instance.Car.CableSpawnPoint.GetComponent<MeshRenderer>().enabled = false;
-                if(!GameManager.Instance.Cable._inLevel)
+                GameManager.Instance.CarInstance.CableSpawnPoint.GetComponent<MeshRenderer>().enabled = false;
+                if(GameManager.Instance.CableInstance == null)
                 {
-                    GameManager.Instance.SpawnCable(GameManager.Instance.Cable);
-                    GameManager.Instance.Cable.StartPoint.transform.position = GameManager.Instance.Car.CableSpawnPoint.transform.position;
+                    GameManager.Instance.SpawnCable(GameManager.Instance.CableRefrence);
+                    GameManager.Instance.CableInstance.StartPoint.transform.position = GameManager.Instance.CarInstance.CableSpawnPoint.transform.position;
                 }
-                else
-                {
-                    GameManager.Instance.Cable.StartPoint.transform.position = GameManager.Instance.Car.CableSpawnPoint.transform.position;
-                    GameManager.Instance.Cable.gameObject.SetActive(true);             
-                }
-                    GameManager.Instance.Cable._followPoint = GameManager.Instance.Cable.EndPoint;
+               
+                    GameManager.Instance.CableInstance.StartPoint.transform.position = GameManager.Instance.CarInstance.CableSpawnPoint.transform.position;
+                    GameManager.Instance.CableInstance.gameObject.SetActive(true);
+                    GameManager.Instance.CableInstance._followPoint = GameManager.Instance.CableInstance.EndPoint;
 
                 return ICableInteract.CurrentCablePoint.start;
 
             case ICableInteract.CurrentCablePoint.start:
 
-            GameManager.Instance.Cable._followPoint = null;
+            GameManager.Instance.CableInstance._followPoint = null;
 
                 return ICableInteract.CurrentCablePoint.end;
 
             case ICableInteract.CurrentCablePoint.end:
 
-                GameManager.Instance.Cable.gameObject.SetActive(false);
-                GameManager.Instance.Car.CableSpawnPoint.GetComponent<MeshRenderer>().enabled = true;
+                GameManager.Instance.CableInstance.gameObject.SetActive(false);
+                GameManager.Instance.CarInstance.CableSpawnPoint.GetComponent<MeshRenderer>().enabled = true;
 
                 return ICableInteract.CurrentCablePoint.none;
         }
@@ -53,11 +51,11 @@ public class ControlCable : ICableInteract
     public void SetCableState(Cable.CableState _newState)
     {
         Dictionary<Cable.CableState, Color32> _psColour = GameManager.Instance.ParticleSystemColour;
-        GameManager.Instance.Cable.Connector.GetComponent<MeshRenderer>().material = GameManager.Instance.Cable.ConnectorStateMaterial[_newState];
+        GameManager.Instance.CableInstance.Connector.GetComponent<MeshRenderer>().material = GameManager.Instance.CableInstance.ConnectorStateMaterial[_newState];
         if(_newState == Cable.CableState.none)
         {
-            GameManager.Instance.Cable.CurrentCurrentState = Cable.CableState.none;
-            foreach(ParticleSystem  _ps in GameManager.Instance.Cable.ParticleSystems)
+            GameManager.Instance.CableInstance.CurrentCurrentState = Cable.CableState.none;
+            foreach(ParticleSystem  _ps in GameManager.Instance.CableInstance.ParticleSystems)
             {
                 var _psEmission = _ps.emission;
                 _psEmission.rateOverTime = 0;
@@ -67,12 +65,12 @@ public class ControlCable : ICableInteract
         else
         {
 
-            GameManager.Instance.Cable.CurrentCurrentState = _newState;
-            foreach(ParticleSystem  _ps in GameManager.Instance.Cable.ParticleSystems)
+            GameManager.Instance.CableInstance.CurrentCurrentState = _newState;
+            foreach(ParticleSystem  _ps in GameManager.Instance.CableInstance.ParticleSystems)
             {
                 var _psMain = _ps.main;
                 var _psEmission = _ps.emission;
-                _psEmission.rateOverTime = GameManager.Instance.Cable.ParticleAmount;
+                _psEmission.rateOverTime = GameManager.Instance.CableInstance.ParticleAmount;
                _psMain.startColor =  new ParticleSystem.MinMaxGradient(_psColour[_newState]);
             }
         }      
