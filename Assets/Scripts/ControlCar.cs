@@ -22,14 +22,14 @@ public class ControlCar : ICableInteract
                 if(!GameManager.Instance.Cable._inLevel)
                 {
                     GameManager.Instance.SpawnCable(GameManager.Instance.Cable);
+                    GameManager.Instance.Cable.StartPoint.transform.position = GameManager.Instance.Car.CableSpawnPoint.transform.position;
                 }
                 else
                 {
-                    GameManager.Instance.Cable._startPoint.transform.position = GameManager.Instance.Car.CableSpawnPoint.transform.position;
+                    GameManager.Instance.Cable.StartPoint.transform.position = GameManager.Instance.Car.CableSpawnPoint.transform.position;
                     GameManager.Instance.Cable.gameObject.SetActive(true);             
                 }
-
-                    GameManager.Instance.Cable._followPoint = GameManager.Instance.Cable._endPoint;
+                    GameManager.Instance.Cable._followPoint = GameManager.Instance.Cable.EndPoint;
 
                 return ICableInteract.CurrentCablePoint.start;
 

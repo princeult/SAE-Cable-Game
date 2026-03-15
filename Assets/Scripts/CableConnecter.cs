@@ -4,6 +4,7 @@ public class CableConnecter : MonoBehaviour
 {
     [SerializeField] private Transform startPoint;
     [SerializeField] private Transform endPoint;
+    [SerializeField] private ParticleSystem _particleSystem;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
