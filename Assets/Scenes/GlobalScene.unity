@@ -341,6 +341,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 20a028d4185607b4bbfc7f2deea2c9c9, type: 3}
   - {fileID: 8300000, guid: ca73954c5d3517947a26affc7e9518f0, type: 3}
   - {fileID: 8300000, guid: 710ecd4a96be4e64f8d7f326946a88d6, type: 3}
+  - {fileID: 8300000, guid: a2e7e57a409a61840856bfee81e67ab5, type: 3}
 --- !u!4 &500352112
 Transform:
   m_ObjectHideFlags: 0
@@ -387,7 +388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   CarRefrence: {fileID: 6155182021807460489, guid: 4c3fa937beacedc489579a5b714e533b, type: 3}
   CableRefrence: {fileID: 5070044843996701409, guid: cbe54635db7dfe148aaa7116859dab53, type: 3}
-  _startSceneName: StartScene
+  _startSceneName: Level_2
 --- !u!4 &1129097064
 Transform:
   m_ObjectHideFlags: 0

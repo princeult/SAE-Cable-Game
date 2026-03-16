@@ -6,6 +6,7 @@ public class AiEnemyPool : MonoBehaviour
 {
     [SerializeField] private AIenemy _enemyPF;
     private ObjectPool<AIenemy> enemies;
+    private readonly IAIInteract _enemyControl = new ControlAi();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void InitAiPool()
     {
@@ -38,15 +39,14 @@ public class AiEnemyPool : MonoBehaviour
 
     private void OnGet(AIenemy _enemy)
     {
-        //_bullet.gameObject.SetActive(true);
         _enemy.gameObject.SetActive(true);
+        //_enemyControl.UpdateAiState(_enemy, IAIInteract.EnemyState.wander); while loop not working
     }
     private AIenemy CreateItem()
     {
-        AIenemy enemy = AIenemy.Instantiate(_enemyPF);
-        enemy.InitAi();
-        enemy.gameObject.SetActive(false);
-        return enemy;
+        AIenemy _enemy = AIenemy.Instantiate(_enemyPF);
+        _enemy.gameObject.SetActive(false);
+        return _enemy;
     }
     void Start()
     {

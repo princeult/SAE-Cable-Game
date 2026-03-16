@@ -66,6 +66,7 @@ public class ControlCable : ICableInteract
     {
         Dictionary<Cable.CableState, Color32> _psColour = GameManager.Instance.ParticleSystemColour;
         GameManager.Instance.CableInstance.Connector.GetComponent<MeshRenderer>().material = GameManager.Instance.CableInstance.ConnectorStateMaterial[_newState];
+        
         if(_newState == Cable.CableState.none)
         {
             GameManager.Instance.CableInstance.CurrentCurrentState = Cable.CableState.none;
@@ -78,7 +79,10 @@ public class ControlCable : ICableInteract
         }
         else
         {
-            SoundEffectManager.Instance.PlaySoundEffect(SoundEffectManager.SoundEffectKey.electrified);
+            if(GameManager.Instance.CableInstance.CurrentCurrentState == Cable.CableState.none)
+            {    
+                SoundEffectManager.Instance.PlaySoundEffect(SoundEffectManager.SoundEffectKey.electrified);
+            }            
             GameManager.Instance.CableInstance.CurrentCurrentState = _newState;
             foreach(ParticleSystem  _ps in GameManager.Instance.CableInstance.ParticleSystems)
             {

@@ -5,6 +5,7 @@ public class CableConnecter : MonoBehaviour
     [SerializeField] private Transform startPoint;
     [SerializeField] private Transform endPoint;
     [SerializeField] private ParticleSystem _particleSystem;
+    private readonly IAIInteract _enemyControl = new ControlAi();
 
     void Start() //Checks for inspector
     {
@@ -28,7 +29,7 @@ public class CableConnecter : MonoBehaviour
         if (_collision.gameObject.CompareTag("Enemy") && GameManager.Instance.CableInstance.CurrentCurrentState == Cable.CableState.electrified)
         {
             AIenemy _enemy = _collision.gameObject.GetComponentInParent<AIenemy>();
-            AiManager.Instance.AiEnemyPool.Release(_enemy);
+            _enemyControl.UpdateAiState(_enemy, IAIInteract.EnemyState.dead);
         }
     }
 }

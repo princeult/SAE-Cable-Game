@@ -33,14 +33,14 @@ private void Awake()
 
     private void Inputs()
     {//Get Movement Axis and Interact Axis for method
-        if(Input.GetKeyDown("e") && _interactOnce)
-        {
-            _interactOnce = false;
-        }
-        else if(!_interactOnce && (Input.GetAxis("Fire1") == 0))
-        {
-            _interactOnce = true;
-        }
+        // if(Input.GetKeyDown("e") && _interactOnce) //used for an iteract system if i had time
+        // {
+        //     _interactOnce = false;
+        // }
+        // else if(!_interactOnce && (Input.GetAxis("Fire1") == 0))
+        // {
+        //     _interactOnce = true;
+        // }
 
         if(Input.GetKeyDown("f") && _interactOnce)
         {
