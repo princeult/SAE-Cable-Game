@@ -22,4 +22,13 @@ public class CableConnecter : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, _distance);
         transform.position = _midpoint;
     }
+
+    private void OnCollisionEnter(Collision _collision)
+    {
+        if (_collision.gameObject.CompareTag("Enemy") && GameManager.Instance.CableInstance.CurrentCurrentState == Cable.CableState.electrified)
+        {
+            AIenemy _enemy = _collision.gameObject.GetComponentInParent<AIenemy>();
+            AiManager.Instance.AiEnemyPool.Release(_enemy);
+        }
+    }
 }

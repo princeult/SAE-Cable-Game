@@ -7,6 +7,7 @@ TagManager:
   - PlayerSpawn
   - Quest
   - Cable
+  - Enemy
   layers:
   - Default
   - TransparentFX

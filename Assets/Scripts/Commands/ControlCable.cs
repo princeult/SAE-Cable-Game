@@ -25,8 +25,15 @@ public class ControlCable : ICableInteract
                     GameManager.Instance.SpawnCable(GameManager.Instance.CableRefrence);
                     GameManager.Instance.CableInstance.StartPoint.transform.position = GameManager.Instance.CarInstance.CableSpawnPoint.transform.position;
                 }
-               
+                    foreach(ParticleSystem  _ps in GameManager.Instance.CableInstance.ParticleSystems)
+                    {
+                        var _psEmission = _ps.emission;
+                        _psEmission.rateOverTime = 0;
+
+                    }
+                    GameManager.Instance.CableInstance.Connector.GetComponent<MeshRenderer>().material = GameManager.Instance.CableInstance.ConnectorStateMaterial[Cable.CableState.none];
                     GameManager.Instance.CableInstance.StartPoint.transform.position = GameManager.Instance.CarInstance.CableSpawnPoint.transform.position;
+                    GameManager.Instance.CableInstance.CurrentCurrentState = Cable.CableState.none;
                     GameManager.Instance.CableInstance.gameObject.SetActive(true);
                     GameManager.Instance.CableInstance._followPoint = GameManager.Instance.CableInstance.EndPoint;
 
