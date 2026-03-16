@@ -12,7 +12,7 @@ public class SoundEffectManager : MonoBehaviour
 
     
     
-    private void Awake()
+    private void Awake() //Create Instance for singleton
     {//Create singleton for SoundEffectManager
         if (Instance != null && Instance != this)
         {
@@ -24,7 +24,7 @@ public class SoundEffectManager : MonoBehaviour
         DontDestroyOnLoad(this);
         InitSounds();
     }
-    private void InitSounds()
+    private void InitSounds() // Add sounds to the Dictionary with their respective enum as the key
     {
         _soundToPlay = new Dictionary<SoundEffectKey, AudioClip>
         {

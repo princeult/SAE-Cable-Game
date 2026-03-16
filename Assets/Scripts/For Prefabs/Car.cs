@@ -15,9 +15,9 @@ public class Car : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (moveDirection.magnitude != 0)
+        if (moveDirection.magnitude != 0) // MoveDirection gets set by Control Car
         {
-            if (Math.Abs(rb.linearVelocity.magnitude) > _maxSpeed) 
+            if (Math.Abs(rb.linearVelocity.magnitude) > _maxSpeed) // if going to fast dont add more speed
             {
                 moveDirection = new(0,0);
             }

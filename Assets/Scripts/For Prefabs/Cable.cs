@@ -23,7 +23,7 @@ public class Cable : MonoBehaviour
 
 
 
-    private void PointFollow()
+    private void PointFollow()//update pos of second cable point if follow point set by control cable
     {
         if(_followPoint != null)
         {
@@ -31,7 +31,7 @@ public class Cable : MonoBehaviour
         }
     }
 
-    private void InitCable()
+    private void InitCable()//check for points set in inspector and init Dictionary fpr mats
     {
         if(StartPoint == null || EndPoint == null) Debug.Log("Start and End Points are not set correctly");
         ConnectorStateMaterial = new Dictionary<CableState, Material> 

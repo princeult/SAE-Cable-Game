@@ -8,7 +8,7 @@ public class Controls : MonoBehaviour
 
     public ICableInteract.CurrentCablePoint currentCablePoint;
 
-    private readonly ICableInteract _carControl = new ControlCar();
+    private readonly ICableInteract _carControl = new ControlCar(); //Commands
     private readonly ICableInteract _cableControl = new ControlCable();
     private bool _interactOnce = true; //For only interacting once per button press
     private float _horizontalInput;
@@ -21,7 +21,7 @@ public class Controls : MonoBehaviour
     }
 
 private void Awake()
-    {//Create singleton for gamemanager
+    {//Create singleton for Controls (for Later use not currently implmented)
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);

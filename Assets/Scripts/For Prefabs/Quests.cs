@@ -15,26 +15,28 @@ public class Quests : MonoBehaviour
     
     [SerializeField, Range(1,20)] private int enemieCount;
     [SerializeField, Range(0.001f, 5)] private float _spawnRange = 2;
-    [SerializeField] private GameObject[] _points;
+    [SerializeField] private GameObject[] _points; // the colliders for cable type quest
 
     private bool _questCompleted; 
-    private List<GameObject> _aIenemies = new ();
+    private List<GameObject> _aIenemies = new (); // this is for checking if all enemies are dead before completing the quest
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        switch (CurrentQuestType)
+        switch (CurrentQuestType) // Init based on what type the quest should be
         {
-            case QuestType.cable:
+            case QuestType.cable: //Set partcles to correct color based on the type
                 Dictionary<Cable.CableState, Color32> _psColour = GameManager.Instance.ParticleSystemColour;
                 foreach(GameObject _point in _points)
                 {
                     var _psMain = _point.GetComponentInChildren<ParticleSystem>(true).main;
                     _psMain.startColor =  new ParticleSystem.MinMaxGradient(_psColour[CurrentCableState]);
                 }
-            break;
-            case QuestType.enemies:
+                break;
+
+
+            case QuestType.enemies: //spawn enemies
                 for(int i = 0; i < enemieCount; i++)
                     {
                         GameObject _enemy = AiManager.Instance.AiEnemyPool.Get().gameObject;
@@ -45,7 +47,7 @@ public class Quests : MonoBehaviour
                         _enemy.GetComponent<AIenemy>().QuestParent = this;
                         _aIenemies.Add(_enemy);               
                     }
-            break;
+                break;
         }
         
         
@@ -83,7 +85,7 @@ public class Quests : MonoBehaviour
         }
     }
 
-    public void LoadNewScene(string _sceneName)
+    public void LoadNewScene(string _sceneName)// this is for when the quest wants to load a new scene and a way to do that from the inspector
     {
         GameManager _gm = GameManager.Instance;
         StartCoroutine(_gm.LoadScene(_sceneName, 3));

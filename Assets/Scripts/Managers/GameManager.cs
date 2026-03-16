@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     };
     
     public enum CarSpawnType {none, levelStart, atPlayerLocation};
-    public Dictionary<Quests, UnityEvent> QuestsToComplete = new();
+    public Dictionary<Quests, UnityEvent> QuestsToComplete = new(); // gets called by a quest prefab using itself as the key
     public Car CarRefrence;
     public Cable CableRefrence;
     
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
 
 
-    public void SpawnCar(Car _car, CarSpawnType carSpawnType, Vector3 _spawnPos = new Vector3(), Quaternion _spawnRot = new Quaternion())
+    public void SpawnCar(Car _car, CarSpawnType carSpawnType, Vector3 _spawnPos = new Vector3(), Quaternion _spawnRot = new Quaternion())// spawn car. 2 modes for starting a level and upgrading while in one
     {
         switch (carSpawnType)
         {
@@ -44,14 +44,14 @@ public class GameManager : MonoBehaviour
 
         
     }
-    public void SpawnCable(Cable cable)
+    public void SpawnCable(Cable cable)// init for cable 
     {
         Vector3 _spawnPos = CarInstance.CableSpawnPoint.position;
         Quaternion _spawnRot = CarInstance.CableSpawnPoint.rotation;
         CableInstance = Instantiate(cable, _spawnPos, _spawnRot);
         CableInstance._inLevel = true;
     }
-    private void GetAllQuests(string _scene)
+    private void GetAllQuests(string _scene)// gets all quests in scene and addes them with their respective events to the dictionary
     {
         if(_scene != "GlobalScene")
         {
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
 
         }
     }
-    public IEnumerator LoadScene(string _scene, float _delay)
+    public IEnumerator LoadScene(string _scene, float _delay)//load a new scene
     {
         yield return new WaitForSeconds(_delay);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_scene);

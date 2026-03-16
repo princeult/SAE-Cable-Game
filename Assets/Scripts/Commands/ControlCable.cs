@@ -62,7 +62,7 @@ public class ControlCable : ICableInteract
         return ICableInteract.CurrentCablePoint.none;
     }
 
-    public void SetCableStateVisuals(Cable.CableState _newState) //here we update the cable visuals to match the current "gameplay state" what kind of power is flowing though basicly
+    public void SetCableState(Cable.CableState _newState) //here we set the new cable state "gameplay state" and visuals to match what kind of power is flowing though basicly
     {
         Dictionary<Cable.CableState, Color32> _psColour = GameManager.Instance.ParticleSystemColour;
         GameManager.Instance.CableInstance.Connector.GetComponent<MeshRenderer>().material = GameManager.Instance.CableInstance.ConnectorStateMaterial[_newState];
