@@ -7,5 +7,5 @@ public interface ICableInteract
     public CurrentCablePoint PlaceCable(CurrentCablePoint currentCablePoint);
     public bool Interact(InteractType type);
     public void MoveControl(Vector2 _direction);
-    public void SetCableState(Cable.CableState _newState);
+    public void SetCableStateVisuals(Cable.CableState _newState);
 }

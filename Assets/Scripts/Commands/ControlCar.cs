@@ -18,7 +18,7 @@ public class ControlCar : ICableInteract
         throw new System.NotImplementedException();
     }
 
-    public void SetCableState(Cable.CableState _newState)
+    public void SetCableStateVisuals(Cable.CableState _newState)
     {
         throw new System.NotImplementedException();
     }
