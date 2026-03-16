@@ -7,7 +7,7 @@ public class QuestEndCollider : MonoBehaviour
     [SerializeField] private ParticleSystem _particleSystem;
 
 
-    private void OnTriggerEnter(Collider _collision)
+    private void OnTriggerStay(Collider _collision)
     {
         if (_collision.gameObject.CompareTag("Cable"))
         {
@@ -16,6 +16,11 @@ public class QuestEndCollider : MonoBehaviour
                 var _psEmission = _particleSystem.emission;
                 _psEmission.rateOverTime = GameManager.Instance.CableInstance.ParticleAmount;
                 _questParent.CompleteQuest();
+            }
+            else
+            {
+                var _psEmission = _particleSystem.emission;
+                _psEmission.rateOverTime = 0;
             }
             
         }
