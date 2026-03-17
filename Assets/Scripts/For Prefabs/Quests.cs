@@ -13,7 +13,7 @@ public class Quests : MonoBehaviour
 
     [NonSerialized] public readonly ICableInteract CableControl = new ControlCable();
     
-    [SerializeField, Range(1,20)] private int enemieCount;
+    [SerializeField, Range(2,20)] private int enemyCount;
     [SerializeField, Range(0.001f, 5)] private float _spawnRange = 2;
     [SerializeField] private GameObject[] _points; // the colliders for cable type quest
 
@@ -37,7 +37,7 @@ public class Quests : MonoBehaviour
 
 
             case QuestType.enemies: //spawn enemies
-                for(int i = 0; i < enemieCount; i++)
+                for(int i = 0; i < enemyCount; i++)
                     {
                         GameObject _enemy = AiManager.Instance.AiEnemyPool.Get().gameObject;
                         

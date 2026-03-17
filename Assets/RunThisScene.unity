@@ -388,7 +388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   CarRefrence: {fileID: 6155182021807460489, guid: 4c3fa937beacedc489579a5b714e533b, type: 3}
   CableRefrence: {fileID: 5070044843996701409, guid: cbe54635db7dfe148aaa7116859dab53, type: 3}
-  _startSceneName: Level_2
+  _startSceneName: IntroScene
 --- !u!4 &1129097064
 Transform:
   m_ObjectHideFlags: 0

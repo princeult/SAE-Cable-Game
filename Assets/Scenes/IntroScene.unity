@@ -1100,6 +1100,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8250848171722091379, guid: 8c1e1e92ee01c7340a52d27da3366929, type: 3}
+      propertyPath: enemyCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250848171722091379, guid: 8c1e1e92ee01c7340a52d27da3366929, type: 3}
       propertyPath: enemieCount
       value: 1
       objectReference: {fileID: 0}
