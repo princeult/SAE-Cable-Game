@@ -1,16 +1,21 @@
+using System;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Controls : MonoBehaviour
 {
     [DoNotSerialize] public static Controls Instance;
-
+    public delegate void UiEvents(bool _paused);
+    public static event UiEvents PauseEvent;
     public ICableInteract.CurrentCablePoint currentCablePoint;
 
     private readonly ICableInteract _carControl = new ControlCar(); //Commands
     private readonly ICableInteract _cableControl = new ControlCable();
-    private bool _interactOnce = true; //For only interacting once per button press
+    private bool _interactOncePlace = true; //For only interacting once per button press
+    private bool _interactOncePause = true; //For only interacting once per button press
+    private bool _paused = false; //To know if game is currently pasued
     private float _horizontalInput;
     private float _verticalInput;
 
@@ -32,7 +37,7 @@ private void Awake()
     }
 
     private void Inputs()
-    {//Get Movement Axis and Interact Axis for method
+    {//For Interact if needed later, currently not implmented
         // if(Input.GetKeyDown("e") && _interactOnce) //used for an iteract system if i had time
         // {
         //     _interactOnce = false;
@@ -42,18 +47,30 @@ private void Awake()
         //     _interactOnce = true;
         // }
 
-        if(Input.GetKeyDown("f") && _interactOnce)
+        if(Input.GetKeyDown("f") && _interactOncePlace)
         {
             currentCablePoint = _cableControl.PlaceCable(currentCablePoint);
-            _interactOnce = false;
+            _interactOncePlace = false;
         }
-        else if(!_interactOnce)
+        else if(!_interactOncePlace)
         {
-            _interactOnce = true;
+            _interactOncePlace = true;
+        }
+
+        if(Input.GetKeyDown("escape") && _interactOncePause)
+        {
+            _paused = !_paused;
+            PauseEvent?.Invoke(_paused);
+            _interactOncePause = false;
+        }
+        else if(!_interactOncePause)
+        {
+            _interactOncePause = true;
         }
         
         _horizontalInput = Input.GetAxis("Horizontal");
         _verticalInput = Input.GetAxis("Vertical");
+
         if(_horizontalInput != 0 || _verticalInput != 0)
         {
             _carControl.MoveControl(new(_horizontalInput, _verticalInput)); 

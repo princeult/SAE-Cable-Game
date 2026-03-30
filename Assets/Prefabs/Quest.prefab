@@ -4885,8 +4885,10 @@ MonoBehaviour:
   CompletionEvent:
     m_PersistentCalls:
       m_Calls: []
+  CurrentQuestType: 0
   CurrentCableState: 0
-  QuestId: 
+  enemyCount: 2
+  _spawnRange: 2
   _points:
   - {fileID: 7723226605823209708}
   - {fileID: 8064446411923114548}
