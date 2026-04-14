@@ -70,7 +70,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: dbb6f999c992e484e88222b4d7c30715, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -215,7 +215,7 @@ MonoBehaviour:
   CurrentEnemyState: 0
   WanderRadius: 3
   AcceptanceDistance: 0.3
-  _rb: {fileID: 546762558060415370}
+  rb: {fileID: 546762558060415370}
 --- !u!1 &8719418789778140670
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: dbb6f999c992e484e88222b4d7c30715, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

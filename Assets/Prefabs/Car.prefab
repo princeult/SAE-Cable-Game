@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 344878054235090190}
   - component: {fileID: 9216805098157034977}
   m_Layer: 6
-  m_Name: Capsule
+  m_Name: Trailer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -563,11 +563,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34989f8e161dce24fbfad015298f4e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Car
+  moveDirection: {x: 0, y: 0}
+  CableSpawnPoint: {fileID: 8117179682021478873}
   _movePower: 20
   _maxSpeed: 5
   rb: {fileID: 2276819046432174721}
-  moveDirection: {x: 0, y: 0}
-  CableSpawnPoint: {fileID: 8117179682021478873}
+  rbPause:
+  - {fileID: 5973888810720667751}
+  - {fileID: 9216805098157034977}
+  - {fileID: 2276819046432174721}
 --- !u!1 &3717726632517814207
 GameObject:
   m_ObjectHideFlags: 0

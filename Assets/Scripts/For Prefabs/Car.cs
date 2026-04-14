@@ -5,13 +5,29 @@ using UnityEngine;
 
 public class Car : MonoBehaviour
 {
-    [SerializeField, Range(1, 50)] private float _movePower = 1;
-    [SerializeField, Range(1, 50)] private float _maxSpeed = 1;
-    [SerializeField] private Rigidbody rb;
     [DoNotSerialize] public Vector2 moveDirection;
     public Transform CableSpawnPoint;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField, Range(1, 50)] private float _movePower = 1;
+    [SerializeField, Range(1, 50)] private float _maxSpeed = 1;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private Rigidbody[] rbPause; // CAB OBJECT LAST
+
+    
+    
+    //Save Velocity for pasuing.
+    private Vector3 _rbLinearVelocity;
+    private Vector3 _rbAngularVelocity;
+
+
+    private void OnEnable()
+    {
+        Controls.PauseEvent += TogglePaused;
+    }
+    private void OnDisable()
+    {
+        Controls.PauseEvent -= TogglePaused;
+    }
 
     private void FixedUpdate()
     {
@@ -24,9 +40,45 @@ public class Car : MonoBehaviour
             rb.AddForce(moveDirection.x * _movePower, 0,  moveDirection.y * _movePower);
         }
     }
-    private void Update()
+
+    private void TogglePaused(bool _paused)
     {
-        Vector3 forward = transform.TransformDirection(Vector3.forward) * 10;
-        Debug.DrawRay(transform.position, forward, Color.red);
+        if (_paused)
+        {
+            // Save Velocity
+            _rbLinearVelocity = rb.linearVelocity;
+            _rbAngularVelocity = rb.angularVelocity;
+
+            foreach(Rigidbody _rb in rbPause)
+            {//for all rigidboys in prefab
+                //Clear Velocity
+                _rb.linearVelocity = new(0,0,0);
+                _rb.angularVelocity = new(0,0,0);
+
+                //Freeze rigidboy
+                _rb.constraints = RigidbodyConstraints.FreezeAll;
+            }
+        }
+        else
+        {
+            for(int i = 0; i < rbPause.Length; i++)
+            {//for all rigidboys in prefab
+                //Clear Constraints
+                if(i == rbPause.Length - 1)
+                {//just for last in array this is for CAB
+                    rbPause[i].constraints = RigidbodyConstraints.None;
+                    rbPause[i].constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+                }
+                else
+                {
+                    rbPause[i].constraints = RigidbodyConstraints.None;
+                }
+                
+            }
+
+            //Reload Velocity
+            //rb.linearVelocity = _rbLinearVelocity;
+            //rb.angularVelocity = _rbAngularVelocity;
+        }
     }
 }

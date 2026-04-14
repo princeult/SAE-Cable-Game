@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [DoNotSerialize] public static GameManager Instance;
     [NonSerialized] public Car CarInstance;
     [NonSerialized] public Cable CableInstance;
+    [NonSerialized] public bool Loading = true;
     [DoNotSerialize] public Dictionary<Cable.CableState, Color32> ParticleSystemColour = new()
     {
         {Cable.CableState.none, new Color32(0, 0, 0, 0)},
@@ -75,6 +76,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator LoadScene(string _scene, float _delay)//load a new scene
     {
         yield return new WaitForSeconds(_delay);
+        Loading = true;
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_scene);
 
         while (!asyncLoad.isDone)
@@ -89,6 +91,7 @@ public class GameManager : MonoBehaviour
         SpawnCar(_car, CarSpawnType.levelStart, _carSpawnPos, _carSpawnRot);
         GetAllQuests(_scene);
         Debug.Log("New Scene " + _scene + " Loaded");
+        Loading = false;
     }
     
     

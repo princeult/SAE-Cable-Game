@@ -47,7 +47,7 @@ private void Awake()
         //     _interactOnce = true;
         // }
 
-        if(Input.GetKeyDown("f") && _interactOncePlace)
+        if((Input.GetKeyDown("joystick button 0") || Input.GetKeyDown("f"))  && _interactOncePlace)
         {
             currentCablePoint = _cableControl.PlaceCable(currentCablePoint);
             _interactOncePlace = false;
@@ -57,11 +57,9 @@ private void Awake()
             _interactOncePlace = true;
         }
 
-        if(Input.GetKeyDown("escape") && _interactOncePause)
+        if((Input.GetKeyDown("escape") || Input.GetKeyDown("joystick button 6")) && _interactOncePause)
         {
-            _paused = !_paused;
-            PauseEvent?.Invoke(_paused);
-            _interactOncePause = false;
+            TogglePause();
         }
         else if(!_interactOncePause)
         {
@@ -71,9 +69,16 @@ private void Awake()
         _horizontalInput = Input.GetAxis("Horizontal");
         _verticalInput = Input.GetAxis("Vertical");
 
-        if(_horizontalInput != 0 || _verticalInput != 0)
+        if((_horizontalInput != 0 || _verticalInput != 0) && !_paused && !GameManager.Instance.Loading)
         {
             _carControl.MoveControl(new(_horizontalInput, _verticalInput)); 
         }
+    }
+
+    public void TogglePause()
+    {
+        _paused = !_paused;
+        PauseEvent?.Invoke(_paused);
+        _interactOncePause = false;
     }
 }

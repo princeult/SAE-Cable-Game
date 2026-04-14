@@ -51,4 +51,33 @@ public class Cable : MonoBehaviour
         PointFollow();
     }
 
+    private void OnEnable()
+    {
+        Controls.PauseEvent += TogglePaused;
+    }
+    private void OnDisable()
+    {
+        Controls.PauseEvent -= TogglePaused;
+    }
+
+    private void TogglePaused(bool _paused)
+    {
+        if (_paused)
+        {
+            foreach(ParticleSystem ps in ParticleSystems)
+            {
+                var _psMain = ps.main;
+                _psMain.simulationSpeed = 0;
+            }
+        }
+        else
+        {
+            foreach(ParticleSystem ps in ParticleSystems)
+            {
+                var _psMain = ps.main;
+                _psMain.simulationSpeed = 1;
+            }
+        }
+    }
+
 }

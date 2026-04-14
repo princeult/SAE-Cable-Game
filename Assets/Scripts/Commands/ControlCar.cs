@@ -10,6 +10,7 @@ public class ControlCar : ICableInteract
 
     public void MoveControl(Vector2 _direction)
     {
+        Debug.Log("Sdasd");
         GameManager.Instance.CarInstance.moveDirection = _direction;
     }
 
